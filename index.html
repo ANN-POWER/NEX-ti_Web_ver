@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEX-ti TEST</title>
+  <link rel="icon" type="image/jpeg" href="img/fox2y-logo.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="container">
+    <section id="start-screen" class="start-page">
+      <section class="start-card">
+        <h1 class="start-title">NEX-ti for NEX2Y</h1>
+        <div class="start-image-wrap">
+          <img class="start-image" src="https://i.ibb.co/DgDct3rv/nexzoo.jpg" alt="NEX-ti 封面图">
+        </div>
+        <div class="start-btn-shadow"></div>
+        <button id="start-btn" class="start-btn">开始测试</button>
+      </section>
+    </section>
+
+    <section id="quiz-screen" class="card hidden">
+      <h1 class="title">NEX-ti for NEX2Y</h1>
+      <img class="title-image" src="img/nexzoo2.jpg" alt="NEXZ 标题图">
+
+      <div id="quiz-area" class="quiz-area">
+        <div class="meta">
+          <span id="progress-text" class="progress-text">第 1 题 / 共 20 题</span>
+          <div class="progress">
+            <div id="progress-bar" class="progress-bar"></div>
+          </div>
+        </div>
+
+        <h2 id="question-title" class="question-title"></h2>
+        <div id="question-image-wrap" class="question-image-wrap hidden">
+          <img id="question-image" class="question-image" alt="题目配图">
+        </div>
+        <div id="options" class="options"></div>
+        <div class="actions">
+          <button id="prev-btn" class="secondary-btn" disabled>上一题</button>
+        </div>
+      </div>
+
+      <section id="result-area" class="result-area hidden">
+        <section class="result-block hero-block">
+          <p class="block-label">MATCH RESULT</p>
+          <h2 id="result-code" class="result-title"></h2>
+          <h3 id="result-name" class="result-title"></h3>
+          <img id="result-image" class="result-image" src="img/fox2y.jpg" alt="结果插图">
+          <p id="mbti-description" class="result-desc"></p>
+        </section>
+
+        <section class="result-block">
+          <p class="block-label">MY NEXZ DNA</p>
+          <h3 class="section-title">七呐成分表——和我最像的成员是……？</h3>
+          <div id="member-bars" class="member-bars"></div>
+        </section>
+
+
+        <section class="result-block">
+          <p class="block-label">SHARE</p>
+          <h3 class="section-title">分享你的结果</h3>
+          <p class="share-tip">点击生成分享图后，图片会直接显示在下方，手机可长按保存。</p>
+          <div class="share-actions">
+            <button id="share-btn" class="primary-btn">生成结果图片</button>
+          </div>
+          <div id="share-preview-wrap" class="share-preview-wrap hidden">
+            <p class="share-preview-hint">长按下方图片可保存到手机</p>
+            <img id="share-preview" class="share-preview" alt="结果分享图预览">
+          </div>
+          <canvas id="share-canvas" class="hidden" width="1080" height="1080"></canvas>
+        </section>
+
+        <button id="restart-btn" class="primary-btn">重新测试</button>
+
+        <section class="result-signature">
+          <p class="result-signature-line">测试结果仅供娱乐（^-^）</p>
+          <p class="result-signature-line">部分素材源于网络，如有侵权请联系删除</p>
+          <p class="result-signature-line">出品：Chaeriz、芒果汁大猫、宵夜Kyle、junjun22、Fay</p>
+          <p class="result-signature-line">联系我们：chaeriz@qq.com</p>
+        </section>
+      </section>
+    </section>
+  </main>
+
+  <script defer src="js/data/questions.js"></script>
+  <script defer src="js/data/results.js"></script>
+  <script defer src="js/core/scoring.js"></script>
+  <script defer src="js/core/member-bars.js"></script>
+  <script defer src="js/core/audio.js"></script>
+  <script defer src="script.js"></script>
+</body>
+
+</html>
