@@ -12,7 +12,7 @@
 
   const memberNames = ["YU", "TOMOYA", "HARU", "SO GEON", "SEITA", "HYUI", "YUKI"];
   const memberImageUrls = [
-      "https://videotourl.com/images/1777117668577-6ee72826-b5a2-4314-a289-a479f597232c.png",
+      "https://cloudflarecnimg.scdn.io/i/69ecacbbba5cc_1777118395.webp",
       "https://videotourl.com/images/1777117726303-03f850e6-d8be-4837-a548-5f23a488d125.png",
       "https://videotourl.com/images/1777117742488-0b15c680-e648-41f9-a510-9a0257c47e4c.png",
       "https://videotourl.com/images/1777117753356-88a776bf-51c0-4853-8539-ffab558a2650.png",
