@@ -360,13 +360,13 @@
       question: "如果可以我想要……",
       countForScore: false,
       options: [
-        { text: "moya的执行力", type: ["L"] },
-        { text: "haru的自律", type: ["I"] },
-        { text: "geon的毅力", type: ["L"] },
+        { text: "moya的capcut会员", type: ["L"] },
+        { text: "haru的彩票", type: ["I"] },
+        { text: "geon的运动细胞", type: ["L"] },
         { text: "yu的厨艺", type: ["S"] },
         { text: "hyui的pro按键", type: ["E"] },
-        { text: "seita的细腻", type: ["S"] },
-        { text: "yuki的稳重", type: ["I"] },
+        { text: "seita的锐平", type: ["S"] },
+        { text: "yuki的酒窝", type: ["I"] },
         { text: "NEXZ的舞蹈实力", type: ["X"] }
       ]
     },
@@ -378,7 +378,7 @@
         { text: "摇身一变变成Hello Kitty向hyui表白", type: ["E"] },
         { text: "去买一份香香的炸猪排围着yuki转圈圈", type: ["X"] },
         { text: "突然对着哥line跳beat-boxer的dance break", type: ["L"] },
-        { text: "前面背一个库巴包后面背一个苏建天吸引so geon注意力", type: ["X"] },
+        { text: "前面背一个库巴包后面背一个建士奇吸引so geon注意力", type: ["X"] },
         { text: "拿着画板走到seita面前让他摆姿势开始作画", type: ["S"] },
         { text: "突然来个后空翻然后跳出道曲离场", type: ["X"] }
       ]
@@ -390,7 +390,7 @@
       options: [
         { text: "yu的卡姿兰大眼睛。前面的帅哥是谁！嗷原来是镜子里的我", type: ["X"] },
         { text: "moya的明太子嘴唇。什么东西QQ弹弹还很软，原来是我", type: ["X"] },
-        { text: "so geon嘴角的巧克力痣。为什么所有人都在看着我", type: ["I"] },
+        { text: "so geon的巧克力痣。为什么所有人都在看着我", type: ["I"] },
         { text: "hyui的牙齿。啊好凉快", type: ["E"] }
       ]
     },
