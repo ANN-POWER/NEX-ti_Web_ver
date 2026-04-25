@@ -29,6 +29,7 @@
   const resultArea = document.getElementById("result-area");
   const resultCode = document.getElementById("result-code");
   const resultName = document.getElementById("result-name");
+  const resultImage = document.getElementById("result-image");
   const mbtiDescription = document.getElementById("mbti-description");
   const dimensionBreakdown = document.getElementById("dimension-breakdown");
   const memberBarsContainer = document.getElementById("member-bars");
@@ -296,11 +297,141 @@
       ctx.fillText("RESULT", RESULT_IMG_X + RESULT_IMG_SIZE / 2, RESULT_IMG_Y + RESULT_IMG_SIZE / 2);
     }
 
+    /**
+ * 智能换行函数：支持中英文混排、避免标点符号行首、保持英文单词完整
+ */
+    // function isWordBreakChar(ch) {
+    //   const breakCharSet = new Set([' ', ',', '.', '?', '!', ';', ':', '-', ')', ']', '】', '}']);
+    //   // 如果是拉丁字母范围外的字符（如中文），或者是在断词符集合里的，都认为是可断开的
+    //   if (ch.charCodeAt(0) < 0x2E80 || breakCharSet.has(ch)) {
+    //     return true;
+    //   }
+    //   return false;
+    // }
+    // function smartWrapText(ctx, text, x, y, maxWidth, lineHeight) {
+    //   // 1. 定义需要避讳在行首的中文标点符号 (正则表达式)
+    //   const forbiddenStartChars = /[\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201d|\u2019|\uff09|\u300b|\u3009|\u3011|\u300d|\u3015|\u2026]/;
+
+    //   let currentLine = '';
+    //   let currentWidth = 0;
+
+    //   for (let i = 0; i < text.length; i++) {
+    //     const char = text[i];
+    //     const testLine = currentLine + char;
+    //     const testWidth = ctx.measureText(testLine).width;
+
+    //     // --- 核心逻辑开始 ---
+
+    //     // 情况1: 如果加上当前字符后宽度超标
+    //     if (testWidth > maxWidth && currentLine !== '') {
+    //       // A. 检查是否是英文单词的一部分 (非空格、非标点)
+    //       // 简单判断：如果当前字符不是断词符，且上一行末尾也不是断词符，说明在一个单词中间
+    //       const isCharBreak = isWordBreakChar(char);
+    //       const isLastCharBreak = currentLine.length > 0 ? isWordBreakChar(currentLine[currentLine.length - 1]) : true;
+
+    //       if (!isCharBreak && !isLastCharBreak) {
+    //         // 正在一个英文单词中间，不能断，直接跳到下一行绘制整个单词
+    //         ctx.fillText(currentLine, x, y);
+    //         currentLine = char;
+    //         y += lineHeight;
+    //       } else {
+    //         // B. 正常换行（在空格或标点后断开）
+    //         ctx.fillText(currentLine, x, y);
+    //         currentLine = char;
+    //         y += lineHeight;
+    //       }
+    //       currentWidth = ctx.measureText(currentLine).width;
+    //     }
+    //     // 情况2: 遇到了中文标点，并且这个标点会导致下一行行首是这个标点
+    //     else if (forbiddenStartChars.test(char) && (currentLine === '' || isWordBreakChar(currentLine[currentLine.length - 1]))) {
+    //       // 这是一个特殊情况，我们需要回溯，把上一行的最后一个字符（通常是空格）去掉，让标点留在上一行末尾
+    //       // 但为了简化，我们这里主要处理行首不为空的场景。
+    //       // 对于绝大多数情况，上面的逻辑已经足够。
+    //       currentLine += char;
+    //       currentWidth = testWidth;
+    //     }
+    //     // 情况3: 正常情况，继续在当前行添加字符
+    //     else {
+    //       currentLine = testLine;
+    //       currentWidth = testWidth;
+    //     }
+
+    //     // --- 核心逻辑结束 ---
+    //   }
+
+    //   // 绘制最后一行
+    //   if (currentLine) {
+    //     ctx.fillText(currentLine, x, y);
+    //   }
+    // }
+    function smartWrapText(ctx, text, x, y, maxWidth, lineHeight) {
+      // 1. 闭标点（不能在行首）： 。 ， ？ ！ ： ； ） 】 》 ...
+      const forbiddenStartChars = /[\u3002|\uff1f|\uff01|\uff0c|\u3001|\uff1b|\uff1a|\u201d|\u2019|\uff09|\u300b|\u3009|\u3011|\u300d|\u3015|\u2026]/;
+
+      // 2. 开标点（不能在行尾）： （ 【 《 「 『 ( [ { ...
+      const forbiddenEndChars = /[\uff08|\u300a|\u3008|\u3010|\u300c|\u300e|\uff3b|\uff5b|\uff08|\u201c|\u2018]/;
+
+      let currentLine = '';
+
+      for (let i = 0; i < text.length; i++) {
+        const char = text[i];
+        const testLine = currentLine + char;
+        const testWidth = ctx.measureText(testLine).width;
+
+        // --- 核心判断：只有当宽度超标时，才开始处理换行逻辑 ---
+        if (testWidth > maxWidth && currentLine !== '') {
+
+          // 策略 A：防止“闭标点”出现在下一行的开头
+          // 如果当前这个字是闭标点（比如句号），我们不能把它扔到下一行开头。
+          // 解决方案：强制不换行（让它溢出一点点），或者想办法把它挤在当前行。
+          // 这里我们选择让它留在当前行末尾（即使稍微溢出也比在下一行开头好）。
+          if (forbiddenStartChars.test(char)) {
+            currentLine = testLine; // 强行加在当前行后面
+            // 注意：这里不执行 drawText，也不重置 currentLine
+          }
+          // 策略 B：防止“左括号”留在上一行的末尾
+          // 如果上一个字是左括号，那它绝对不能留在这一行末尾。
+          // 解决方案：把左括号删掉，先把前面的画出来，下一行从括号开始画。
+          else if (forbiddenEndChars.test(currentLine.slice(-1))) {
+            // 1. 绘制去掉括号后的内容
+            const lineWithoutBracket = currentLine.slice(0, -1);
+            ctx.fillText(lineWithoutBracket, x, y);
+
+            // 2. 换行，当前字符（也就是那个左括号）作为新行的开始
+            currentLine = char;
+            y += lineHeight;
+          }
+          // 策略 C：英文单词保护
+          // 如果是英文单词中间断了，就把整个单词移到下一行
+          else if (/^[a-zA-Z0-9]$/.test(char) && /^[a-zA-Z0-9]$/.test(currentLine.slice(-1))) {
+            ctx.fillText(currentLine, x, y);
+            currentLine = char;
+            y += lineHeight;
+          }
+          // 策略 D：普通换行
+          // 其他情况正常换行
+          else {
+            ctx.fillText(currentLine, x, y);
+            currentLine = char;
+            y += lineHeight;
+          }
+        }
+        // --- 宽度没超标，直接添加 ---
+        else {
+          currentLine = testLine;
+        }
+      }
+
+      // 绘制最后一行
+      if (currentLine) {
+        ctx.fillText(currentLine, x, y);
+      }
+    }
     ctx.fillStyle = "#374151";
     ctx.font = "26px 'Segoe UI'";
     const TEXT_MAX_WIDTH = CONTENT_WIDTH - 40 - RESULT_IMG_SIZE - 70;
-    wrapText(ctx, profile.summary, RESULT_IMG_X + RESULT_IMG_SIZE + 30, RESULT_IMG_Y + 42, TEXT_MAX_WIDTH, 40);
-
+    // wrapText(ctx, profile.summary, RESULT_IMG_X + RESULT_IMG_SIZE + 30, RESULT_IMG_Y + 42, TEXT_MAX_WIDTH, 40);
+    smartWrapText(ctx, profile.summary, RESULT_IMG_X + RESULT_IMG_SIZE + 30, RESULT_IMG_Y + 42, TEXT_MAX_WIDTH, 40);
     // --- 4. 底部图表区 (DNA Bars) ---
     const SECTION_GAP = 80; // 模块间距
     const CHART_TITLE_Y = RESULT_IMG_Y + RESULT_IMG_SIZE + SECTION_GAP;
@@ -414,6 +545,7 @@
 
     resultCode.textContent = profile.code;
     resultName.textContent = profile.name;
+    resultImage.src = profile.image;
     mbtiDescription.textContent = profile.summary;
     renderDimensionBreakdown(scores);
     renderMemberBars(scores);

@@ -349,11 +349,14 @@ img {
 
 .result-image {
   display: block;
-  width: min(80%, 360px);
+  width: min(75%, 360px);
   margin: 12px auto;
   border-radius: 16px;
   background: #f8fafc;
   animation: floatY 3s ease-in-out infinite;
+  border: 3px solid #bb15e068;
+  /* box-shadow: 0 10px 24px rgba(86, 19, 203, 0.356); */
+  border-style: dashed;
 }
 
 .section-title {
