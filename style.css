@@ -361,7 +361,7 @@ img {
 
 .section-title {
   margin: 6px 0;
-  font-size: 1rem;
+  font-size: 0.96rem;
   font-weight: 600;
   color: #2d1b69;
   word-break: normal;
@@ -446,6 +446,8 @@ img {
   word-break: normal;
   line-break: strict;
   overflow-wrap: normal;
+  font-size: 0.92rem;
+
   hyphens: none;
 }
 

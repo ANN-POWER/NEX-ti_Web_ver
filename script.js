@@ -371,10 +371,12 @@
       // 2. 开标点（不能在行尾）： （ 【 《 「 『 ( [ { ...
       const forbiddenEndChars = /[\uff08|\u300a|\u3008|\u3010|\u300c|\u300e|\uff3b|\uff5b|\uff08|\u201c|\u2018]/;
 
+      const segments = text.split(/(\s+|[a-zA-Z0-9]+|[\u4e00-\u9fa5])/).filter(s => s && s.trim() !== '');
+
       let currentLine = '';
 
-      for (let i = 0; i < text.length; i++) {
-        const char = text[i];
+      for (let i = 0; i < segments.length; i++) {
+        const char = segments[i];
         const testLine = currentLine + char;
         const testWidth = ctx.measureText(testLine).width;
 
@@ -401,13 +403,7 @@
             currentLine = char;
             y += lineHeight;
           }
-          // 策略 C：英文单词保护
-          // 如果是英文单词中间断了，就把整个单词移到下一行
-          else if (/^[a-zA-Z0-9]$/.test(char) && /^[a-zA-Z0-9]$/.test(currentLine.slice(-1))) {
-            ctx.fillText(currentLine, x, y);
-            currentLine = char;
-            y += lineHeight;
-          }
+
           // 策略 D：普通换行
           // 其他情况正常换行
           else {
