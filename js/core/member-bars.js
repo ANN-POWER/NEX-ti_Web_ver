@@ -11,24 +11,24 @@
   };
 
   const memberNames = ["YU", "TOMOYA", "HARU", "SO GEON", "SEITA", "HYUI", "YUKI"];
-  // const memberImageUrls = [
-  //   "https://i.ibb.co/gMzD95vR/m1.png",
-  //   "https://i.ibb.co/Lh5RmCvX/m2.png",
-  //   "https://i.ibb.co/WWSrtCHT/m3.png",
-  //   "https://i.ibb.co/6727sk2D/m4.png",
-  //   "https://i.ibb.co/6cNp7zJ5/m5.png",
-  //   "https://i.ibb.co/GvbMH4G0/m6.png",
-  //   "https://i.ibb.co/5hLRwnhf/m7.png"
-  // ];
   const memberImageUrls = [
-    "../img/m1.png",
-    "../img/m2.png",
-    "../img/m3.png",
-    "../img/m4.png",
-    "../img/m5.png",
-    "../img/m6.png",
-    "../img/m7.png"
+      "https://videotourl.com/images/1777117668577-6ee72826-b5a2-4314-a289-a479f597232c.png",
+      "https://videotourl.com/images/1777117726303-03f850e6-d8be-4837-a548-5f23a488d125.png",
+      "https://videotourl.com/images/1777117742488-0b15c680-e648-41f9-a510-9a0257c47e4c.png",
+      "https://videotourl.com/images/1777117753356-88a776bf-51c0-4853-8539-ffab558a2650.png",
+      "https://videotourl.com/images/1777117766678-29e75e5b-8401-4cf8-a5ac-ce9d5af2d7ba.png",
+      "https://videotourl.com/images/1777117779734-9e859686-c501-4baa-85ac-c0c11abebe30.png",
+      "https://videotourl.com/images/1777117792309-18141db0-b1ae-4d77-a09b-7fdf747eb128.png"
   ];
+  // const memberImageUrls = [
+  //   "../img/m1.png",
+  //   "../img/m2.png",
+  //   "../img/m3.png",
+  //   "../img/m4.png",
+  //   "../img/m5.png",
+  //   "../img/m6.png",
+  //   "../img/m7.png"
+  // ];
   function buildMemberBars(scores) {
     const members = [0, 0, 0, 0, 0, 0, 0];
     const dimensionKeys = Object.keys(memberWeights);
