@@ -1,7 +1,7 @@
 (() => {
-  const HIGH_E_THRESHOLD = 17;
-  const HIGH_I_THRESHOLD = 17;
-  const HIGH_P_THRESHOLD = 21;
+  const HIGH_E_THRESHOLD = 18;
+  const HIGH_I_THRESHOLD = 18;
+  const HIGH_P_THRESHOLD = 20;
   const HIGH_L_THRESHOLD = 22;
   const HIGH_S_THRESHOLD = 18;
   const HIGH_X_THRESHOLD = 17;

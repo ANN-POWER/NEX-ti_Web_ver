@@ -11,16 +11,24 @@
   };
 
   const memberNames = ["YU", "TOMOYA", "HARU", "SO GEON", "SEITA", "HYUI", "YUKI"];
+  // const memberImageUrls = [
+  //   "https://i.ibb.co/gMzD95vR/m1.png",
+  //   "https://i.ibb.co/Lh5RmCvX/m2.png",
+  //   "https://i.ibb.co/WWSrtCHT/m3.png",
+  //   "https://i.ibb.co/6727sk2D/m4.png",
+  //   "https://i.ibb.co/6cNp7zJ5/m5.png",
+  //   "https://i.ibb.co/GvbMH4G0/m6.png",
+  //   "https://i.ibb.co/5hLRwnhf/m7.png"
+  // ];
   const memberImageUrls = [
-    "https://i.ibb.co/gMzD95vR/m1.png",
-    "https://i.ibb.co/Lh5RmCvX/m2.png",
-    "https://i.ibb.co/WWSrtCHT/m3.png",
-    "https://i.ibb.co/6727sk2D/m4.png",
-    "https://i.ibb.co/6cNp7zJ5/m5.png",
-    "https://i.ibb.co/GvbMH4G0/m6.png",
-    "https://i.ibb.co/5hLRwnhf/m7.png"
+    "../img/m1.png",
+    "../img/m2.png",
+    "../img/m3.png",
+    "../img/m4.png",
+    "../img/m5.png",
+    "../img/m6.png",
+    "../img/m7.png"
   ];
-
   function buildMemberBars(scores) {
     const members = [0, 0, 0, 0, 0, 0, 0];
     const dimensionKeys = Object.keys(memberWeights);
