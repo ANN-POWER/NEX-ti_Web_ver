@@ -425,9 +425,9 @@
     }
     ctx.fillStyle = "#374151";
     ctx.font = "26px 'Segoe UI'";
-    const TEXT_MAX_WIDTH = CONTENT_WIDTH - 40 - RESULT_IMG_SIZE - 70;
+    const TEXT_MAX_WIDTH = CONTENT_WIDTH - 40 - RESULT_IMG_SIZE - 80;
     // wrapText(ctx, profile.summary, RESULT_IMG_X + RESULT_IMG_SIZE + 30, RESULT_IMG_Y + 42, TEXT_MAX_WIDTH, 40);
-    smartWrapText(ctx, profile.summary, RESULT_IMG_X + RESULT_IMG_SIZE + 30, RESULT_IMG_Y + 42, TEXT_MAX_WIDTH, 40);
+    smartWrapText(ctx, profile.summary, RESULT_IMG_X + RESULT_IMG_SIZE + 40, RESULT_IMG_Y + 50, TEXT_MAX_WIDTH, 40);
     // --- 4. 底部图表区 (DNA Bars) ---
     const SECTION_GAP = 80; // 模块间距
     const CHART_TITLE_Y = RESULT_IMG_Y + RESULT_IMG_SIZE + SECTION_GAP;
