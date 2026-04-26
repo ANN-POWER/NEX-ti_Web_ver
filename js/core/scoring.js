@@ -58,7 +58,7 @@
       if (P > HIGH_P_THRESHOLD * a2 && E >= I + 2) {
         return "RTH";
       }
-      if (I > E + 2 && P > HIGH_P_THRESHOLD * a1) {
+      if (I > E + 2 && P >= HIGH_P_THRESHOLD * a1) {
         return "MIRACLE";
       }
     }
@@ -73,12 +73,12 @@
     if (E >= HIGH_E_THRESHOLD * a3) {
       return "EEEE";
     }
-    if (S > HIGH_S_THRESHOLD * a2) {
+    if (S >= HIGH_S_THRESHOLD * a2) {
       if (I > HIGH_I_THRESHOLD * a3 - 1) {
         return "FOREST";
       }
     }
-    if (P <= HIGH_P_THRESHOLD * a1 || L <= HIGH_L_THRESHOLD * a1) {
+    if (P <= HIGH_P_THRESHOLD * a1 + 1 && L <= HIGH_L_THRESHOLD * a2) {
       return "O_RLY";
     }
     if (S > HIGH_S_THRESHOLD * a2) {
