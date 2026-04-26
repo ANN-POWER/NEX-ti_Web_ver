@@ -371,9 +371,8 @@
       // 2. 开标点（不能在行尾）： （ 【 《 「 『 ( [ { ...
       const forbiddenEndChars = /[\uff08|\u300a|\u3008|\u3010|\u300c|\u300e|\uff3b|\uff5b|\uff08|\u201c|\u2018]/;
 
-      // const segments = text.split(/(\s+|[a-zA-Z0-9]+|[\u4e00-\u9fa5])/).filter(s => s && s.trim() !== '');
-      // 推荐方案：使用零宽断言分割
-      const segments = text.split(/(?<=\S)(?=\s)|(?<=\s)(?=\S)/);
+      const segments = text.split(/(\s+|[a-zA-Z0-9]+|[\u4e00-\u9fa5])/).filter(s => s && s.trim() !== '');
+
       let currentLine = '';
 
       for (let i = 0; i < segments.length; i++) {
