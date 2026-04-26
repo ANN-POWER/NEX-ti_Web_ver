@@ -394,13 +394,24 @@
           // 策略 B：防止“左括号”留在上一行的末尾
           // 如果上一个字是左括号，那它绝对不能留在这一行末尾。
           // 解决方案：把左括号删掉，先把前面的画出来，下一行从括号开始画。
+          // 策略 B：防止“左括号”留在上一行的末尾
           else if (forbiddenEndChars.test(currentLine.slice(-1))) {
-            // 1. 绘制去掉括号后的内容
-            const lineWithoutBracket = currentLine.slice(0, -1);
-            ctx.fillText(lineWithoutBracket, x, y);
 
-            // 2. 换行，当前字符（也就是那个左括号）作为新行的开始
-            currentLine = char;
+            // 1. 提取出那个“惹祸”的左括号
+            const lastChar = currentLine.slice(-1);
+
+            // 2. 提取出左括号前面的内容
+            const contentBeforeBracket = currentLine.slice(0, -1);
+
+            // 3. 绘制去掉括号后的内容
+            if (contentBeforeBracket) {
+              ctx.fillText(contentBeforeBracket, x, y);
+            }
+
+            // 4. 换行，并将“左括号”作为新行的开始
+            // 注意：这里不能直接等于 char，而要等于我们刚才提取出来的 lastChar
+            currentLine = lastChar;
+
             y += lineHeight;
           }
 

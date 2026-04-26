@@ -365,7 +365,7 @@
         { text: "geon的运动细胞", type: ["L"] },
         { text: "yu的厨艺", type: ["S"] },
         { text: "hyui的pro按键", type: ["E"] },
-        { text: "seita的锐平", type: ["S"] },
+        { text: "seita的锐评", type: ["S"] },
         { text: "yuki的酒窝", type: ["I"] },
         { text: "NEXZ的舞蹈实力", type: ["X"] }
       ]
