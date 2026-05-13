@@ -1,6 +1,7 @@
 # NEX-ti for NEX2Y (Web)
 
 欢迎来到 NEX-ti for NEX2Y 网页版。
+网址：https://nex-ti-web-ver.pages.dev/
 
 ## 项目结构
 
