@@ -61,6 +61,37 @@ img {
   /* box-shadow: 0 16px 36px rgba(120, 127, 168, 0.22); */
 }
 
+.language-picker {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 32px;
+}
+
+.language-btn {
+  min-height: 52px;
+  border-radius: 16px;
+  border: 1px solid rgba(196, 181, 253, 0.72);
+  background: rgba(255, 255, 255, 0.92);
+  color: #5b21b6;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.2s ease, border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.language-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(124, 58, 237, 0.14);
+}
+
+.language-btn.is-active {
+  border-color: transparent;
+  background: linear-gradient(135deg, #7c3aed 0%, #ec4899 100%);
+  color: #ffffff;
+  box-shadow: 0 12px 24px rgba(124, 58, 237, 0.22);
+}
+
 .start-btn-shadow {
   width: 72%;
   height: 20px;
@@ -164,7 +195,8 @@ img {
   color: #1f2937;
   word-break: normal;
   line-break: strict;
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
   hyphens: none;
 }
 
@@ -243,7 +275,8 @@ img {
   color: #1f2a44;
   word-break: normal;
   line-break: strict;
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
   hyphens: none;
 }
 
@@ -332,7 +365,8 @@ img {
   color: #1f2937;
   word-break: normal;
   line-break: strict;
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
   hyphens: none;
 }
 
@@ -343,7 +377,8 @@ img {
   color: #374151;
   word-break: normal;
   line-break: strict;
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
   hyphens: none;
 }
 
@@ -445,9 +480,9 @@ img {
   color: #4b5563;
   word-break: normal;
   line-break: strict;
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
   font-size: 0.92rem;
-
   hyphens: none;
 }
 
@@ -491,7 +526,8 @@ img {
   color: #64748b;
   word-break: normal;
   line-break: strict;
-  overflow-wrap: normal;
+  overflow-wrap: break-word;
+  white-space: pre-wrap;
   hyphens: none;
 }
 
@@ -520,6 +556,10 @@ img {
 
   .card {
     padding: 18px 14px;
+  }
+
+  .language-picker {
+    grid-template-columns: 1fr;
   }
 
   .question-image {
